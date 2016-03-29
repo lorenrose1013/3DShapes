@@ -27,14 +27,15 @@
 void add_sphere( struct matrix * points, 
 	double cx, double cy, double r, 
 	double step ) {
-	int x, y, z, t, p;
+	double x, y, z, t, p;
 	p = step;
 	while (p <= 1){
+		//printf("p loop\n");
 		t = step;
 		while (t <= 1){
 			x = r * cos( M_PI * 2 * t) + cx;
 			y = r * sin( M_PI * 2 * t) * cos(M_PI * p ) + cy;
-			z = r * sin( M_PI * 2 * t) * sin(M_PI * p ) + cz;
+			z = r * sin( M_PI * 2 * t) * sin(M_PI * p ) ;
 			add_point(points, x, y, z);
 			t += step;
 		}
@@ -64,14 +65,15 @@ void add_sphere( struct matrix * points,
 void add_torus( struct matrix * points, 
 		double cx, double cy, double r1, double r2, 
 		double step ) {
-	int x, y, z, t, p;
+	double x, y, z, t, p;
+
 	p = step;
 	while (p <= 1){
 		t = step;
 		while (t <= 1){
 			x = r1 * cos( 2 * M_PI * t) + cx;
 			y = cos( M_PI * 2 * p) * (r1 * sin(M_PI * 2 * t) + r2 )+ cy;
-			x = sin( M_PI * 2 * p) * (r1 * sin(M_PI * 2 * t) + r2 )+ cz;
+			z = sin( M_PI * 2 * p) * (r1 * sin(M_PI * 2 * t) + r2 );
 			add_point(points, x, y, z);
 			t += step;
 		}
