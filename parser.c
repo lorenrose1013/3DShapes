@@ -123,7 +123,29 @@ void parse_file ( char * filename,
 	     &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);
       add_curve(pm, x1, y1, x2, y2, x3, y3, x4, y4, 0.01, HERMITE_MODE );
       //printf( "%lf %lf %lf\n", x, y, z);
-    }    
+    } 
+    else if( strncmp(line, "box", strlen(line)) == 0) {
+      //clear code
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf %lf %lf %lf", &x, &y, &z, &width, &height, &depth);
+      add_box(pm, x, y, z, width, height, depth);
+      return;
+    }
+    else if( strncmp(line, "sphere", strlen(line)) == 0) {
+      //clear code
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf", &x, &y, &radius);
+      add_sphere(pm, x, y, radius, .01)
+      return;
+    }
+    else if( strncmp(line, "torus", strlen(line)) == 0) {
+      //clear code
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf %lf", &x, &y, &radius1, &radius2);
+      add_torus(pm, x, y, radius1, radius2, .01 );
+      return;
+    }
+   
     else if ( strncmp(line, "scale", strlen(line)) == 0 ) {
       //printf("SCALE\n");
       fgets(line, 255, f);
@@ -192,26 +214,6 @@ void parse_file ( char * filename,
     }
     else if( strncmp(line, "clear", strlen(line)) == 0) {
       //clear code
-      return;
-    }
-    else if( strncmp(line, "box", strlen(line)) == 0) {
-      //clear code
-      fgets(line, 255, f);
-      sscanf(line, "%lf %lf %lf %lf %lf %lf", &x, &y, &z, &width, &height, &depth);
-      
-      return;
-    }
-    else if( strncmp(line, "sphere", strlen(line)) == 0) {
-      //clear code
-      fgets(line, 255, f);
-      sscanf(line, "%lf %lf %lf", &x, &y, &radius);
-      return;
-    }
-    else if( strncmp(line, "torus", strlen(line)) == 0) {
-      //clear code
-      fgets(line, 255, f);
-      sscanf(line, "%lf %lf %lf %lf", &x, &y, &radius1, &radius2);
-
       return;
     }
     else {
