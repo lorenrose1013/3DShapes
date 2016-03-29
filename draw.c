@@ -70,8 +70,8 @@ void add_torus( struct matrix * points,
 		t = step;
 		while (t <= 1){
 			x = r1 * cos( 2 * M_PI * t) + cx;
-			y = sin( M_PI * 2 * t) * cos(M_PI * p ) + cy;
-			x = r * sin( M_PI * 2 * t) * sin(M_PI * p ) + cz;
+			y = cos( M_PI * 2 * p) * (r1 * sin(M_PI * 2 * t) + r2 )+ cy;
+			x = sin( M_PI * 2 * p) * (r1 * sin(M_PI * 2 * t) + r2 )+ cz;
 			add_point(points, x, y, z);
 			t += step;
 		}
